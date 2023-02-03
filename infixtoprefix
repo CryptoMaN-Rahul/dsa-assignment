@@ -9,7 +9,8 @@ class stack
     public:
     stack();
     void push(char x);
-    void isempty();
+    void pop();
+    int isempty();
     void convert();
     void evaluate();
 };
@@ -45,7 +46,7 @@ void stack::convert()
 {
 
     int n, t1=0;
-    char test[50];
+    char  test[50];
     cout<<"enter expresiion"<<endl;
     cin>>exp;
     n=strlen(exp);
@@ -77,10 +78,10 @@ void stack::convert()
 
     else if(!isempty())
     {
-while(top>0)
-test[t1]=arr[top];
-pop();
-t1++;
+      while(top>0)
+        test[t1]=arr[top];
+        pop();
+        t1++;
 
     }
 
@@ -88,8 +89,8 @@ t1++;
     for( int j=0;j<t;j++)
     {
 
-        prefix[j]=test[t-1];
-        cout<<prefix[j];
+        pre[j]=test[t-1];
+        cout<<pre[j];
         t1--;
     }
     }
