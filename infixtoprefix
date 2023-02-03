@@ -1,0 +1,104 @@
+#include<iostream>
+#include <cstring>
+using namespace std;
+class stack
+{
+    private:
+    char arr[50],exp[50],pre[50];
+    int top,t;
+    public:
+    stack();
+    void push(char x);
+    void isempty();
+    void convert();
+    void evaluate();
+};
+stack::stack()
+{
+    top=-1;
+    t=0;
+    convert();
+    evaluate();
+}
+
+int stack::isempty()
+{
+if(top<0)
+return 1;
+else
+return 0;
+
+
+}
+
+void stack::pop()
+{
+
+    top--;
+}
+void stack::push(char x)
+{
+    top++;
+arr[top]=x;
+}
+void stack::convert()
+{
+
+    int n, t1=0;
+    char test[50];
+    cout<<"enter expresiion"<<endl;
+    cin>>exp;
+    n=strlen(exp);
+    for ( int i=n-1;i>=0;i--)
+    {
+
+        if((exp[i]==')')||(exp[i]=='+')||(exp[i]=='-')||(exp[i]=='*')||(exp[i]=='/')||(exp[i]=='%')||(exp[i]=='^'))
+    {
+        push(exp[i]);
+    }
+    else if(exp[i]=='(')
+    {
+        while(arr[top]!=')')
+        {
+            test[t1]=arr[top];
+            pop();
+            t1++;
+        }
+        if(arr[top]==')')
+        pop();
+    }
+
+    else
+    {
+        test[t1]=exp[i];
+        
+        t1++;
+    }
+
+    else if(!isempty())
+    {
+while(top>0)
+test[t1]=arr[top];
+pop();
+t1++;
+
+    }
+
+    t=t1;
+    for( int j=0;j<t;j++)
+    {
+
+        prefix[j]=test[t-1];
+        cout<<prefix[j];
+        t1--;
+    }
+    }
+}
+
+int main()
+{
+    stack a;
+    
+    return 0;
+}
+
